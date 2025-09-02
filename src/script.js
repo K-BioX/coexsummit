@@ -50,11 +50,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
     if (window.scrollY > 100) {
-        header.style.background = 'rgba(255, 255, 255, 0.99)';
-        header.style.boxShadow = '0 2px 30px rgba(0, 0, 0, 0.15)';
+        header.style.background = 'rgba(0, 0, 0, 0.98)';
+        header.style.boxShadow = '0 2px 30px rgba(255, 255, 255, 0.1)';
     } else {
-        header.style.background = 'rgba(255, 255, 255, 0.98)';
-        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        header.style.background = 'rgba(0, 0, 0, 0.95)';
+        header.style.boxShadow = '0 2px 20px rgba(255, 255, 255, 0.1)';
     }
 });
 
@@ -125,6 +125,35 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+    
+    // Schedule tabs functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const daySchedules = document.querySelectorAll('.day-schedule');
+    
+    if (tabBtns.length > 0 && daySchedules.length > 0) {
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetDay = this.getAttribute('data-day');
+                
+                // Remove active class from all tabs and schedules
+                tabBtns.forEach(b => b.classList.remove('active'));
+                daySchedules.forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding schedule
+                this.classList.add('active');
+                const targetSchedule = document.getElementById(targetDay);
+                if (targetSchedule) {
+                    targetSchedule.classList.add('active');
+                }
+                
+                // Smooth scroll to schedule section
+                const scheduleSection = document.getElementById('schedule');
+                if (scheduleSection) {
+                    scheduleSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    }
 });
 
 // Counter Animation for Stats

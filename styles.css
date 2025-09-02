@@ -2829,7 +2829,7 @@ body {
 .top9-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 25px;
     margin-top: 40px;
 }
 
@@ -2986,6 +2986,13 @@ body {
     }
 }
 
+@media (max-width: 1024px) {
+    .top9-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .top9-project {
         padding: 60px 0;
@@ -2997,14 +3004,14 @@ body {
     
     .top9-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 20px;
         max-width: 400px;
         margin-left: auto;
         margin-right: auto;
     }
     
     .top9-banner {
-        padding: 30px 20px;
+        padding: 25px 20px;
     }
     
     .banner-content h3 {
